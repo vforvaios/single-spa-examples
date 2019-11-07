@@ -20,20 +20,20 @@ const AnimationExample = () => {
   <Router basename="/home">
     <Route
       render={({ location }) => (
-        <div>
+        <div style={{height: '90%'}}>
           <Route
             exact
             path="/"
             render={() => <Redirect to="/hsl/10/90/50" />}
           />
-          <button onClick={sendMessageToVue}>Send message to vue</button>
+          <button style={{position: 'absolute', zIndex: '2', top: '160px'}} onClick={sendMessageToVue}>Send message to vue</button>
           <ul style={styles.nav}>
             <NavLink to="/hsl/10/90/50">Red</NavLink>
             <NavLink to="/hsl/120/100/40">Green</NavLink>
             <NavLink to="/rgb/33/150/243">Blue</NavLink>
             <NavLink to="/rgb/240/98/146">Pink</NavLink>
           </ul>
-          <h1>This is a ReactJS app!</h1>
+          <h1 style={{position: 'absolute', zIndex: '1'}}>This is a ReactJS app!</h1>
 
           <div style={styles.content}>
             <TransitionGroup>
@@ -71,10 +71,10 @@ const HSL = ({ match: { params } }) => (
     style={{
       ...styles.fill,
       ...styles.hsl,
-      background: `hsl(${params.h}, ${params.s}%, ${params.l}%)`
+      background: `hsl(${params.h}, ${params.s}%, ${params.l}%)`,
+      height: '100%'
     }}
   >
-    hsl({params.h}, {params.s}%, {params.l}%)
   </div>
 );
 
@@ -86,7 +86,7 @@ const RGB = ({ match: { params } }) => (
       background: `rgb(${params.r}, ${params.g}, ${params.b})`
     }}
   >
-    rgb({params.r}, {params.g}, {params.b})
+    
   </div>
 );
 
@@ -101,11 +101,15 @@ styles.fill = {
 
 styles.content = {
   ...styles.fill,
+  position: "absolute",
   top: "40px",
-  textAlign: "center"
+  textAlign: "center",
+  bottom: 'auto',
+  height: '80%'
 };
 
 styles.nav = {
+  position: "absolute",
   padding: 0,
   margin: 0,
   top: 0,
@@ -132,7 +136,9 @@ styles.rgb = {
   ...styles.fill,
   color: "white",
   paddingTop: "20px",
-  fontSize: "30px"
+  fontSize: "30px",
+  height: '100%',
+  bottom: 'auto'
 };
 
 export default AnimationExample;
